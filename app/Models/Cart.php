@@ -9,4 +9,9 @@ class Cart extends Model
 {
     use HasFactory;
     public $table="cart";
+
+    public function product(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

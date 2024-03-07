@@ -16,6 +16,8 @@ return new class extends Migration
             $table->integer('product_id');
             $table->integer('user_id');
             $table->string('status');
+            $table->decimal('total_price', 6, 2);
+            $table->string('session_id');
             $table->string('payment_method');
             $table->string('payment_status');
             $table->string('address');

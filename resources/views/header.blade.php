@@ -1,10 +1,10 @@
     <?php
     use App\Http\Controllers\ProductController;
-    $total=0;
-    if(Session::has('user'))
-    {
-    $total= ProductController::cartItem();
-    }
+    // $total=0;
+    // if(Session::has('user'))
+    // {
+    // $total= ProductController::cart();
+    // }
 
     ?>
     <nav class="navbar navbar-expand-lg bg-body-tertiary ">
@@ -34,10 +34,12 @@
             <li><a href="/login">LOGIN</a></li>
                 @endif
             </ul>
+
             <ul class="navbar-nav ms-auto">
-                <li><a href="/cartlist"><button style="margin-right: 1rem; font-size: 15px" class="btn btn-outline-dark d-flex align-items-center" type="submit">
+                <li><a href="/cart">
+                    <button style="margin-right: 1rem; font-size: 15px" class="btn btn-outline-dark d-flex align-items-center" type="submit">
                     <i class="gg-shopping-cart"></i>Cart
-                    <span class="badge bg-dark text-white ms-1 ">{{$total}}</span>
+                    <span class="badge bg-dark text-white ms-1 ">{{ count((array) session('cart'))}}</span>
                 </button></a></li>
             </ul>
         </div>
