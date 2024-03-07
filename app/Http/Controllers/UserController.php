@@ -23,21 +23,10 @@ class UserController extends Controller
     {
         // return $req->input();
         $user = new User;
-<<<<<<< HEAD
-        $user -> name = $req->name;
-        $user -> email = $req->email;
-        $user -> password = Hash::make($req->password);
-        $user -> save();
-        $req->session()->put('user',$user);
-        return redirect('/');
-    }
-
-=======
         $user->name = $req->name;
         $user->email = $req->email;
         $user->password = Hash::make($req->password);
         $user->save();
         return redirect('/login');
     }
->>>>>>> 04d1b5c67fe9383007ab6c55dcc03d2474b01969
 }
