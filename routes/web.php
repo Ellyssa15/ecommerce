@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductController;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,16 +31,19 @@ Route::get('/logout', function () {
 });
 
 
-Route::post("/register",[UserController::class,'register']);
-Route::post("/login",[UserController::class,'login']);
-Route::get("/",[ProductController::class,'index']);
-Route::get("detail/{id}",[ProductController::class,'detail']);
-Route::post("add_to_cart",[ProductController::class,'addToCart']);
-Route::get("cartlist",[ProductController::class,'cartList']);
-Route::get("removecart/{id}",[ProductController::class,'removeCart']);
-// Route::get("checkout",[ProductController::class,'checkout']);
-Route::post('/checkout', [ProductController::class, 'checkout'])->name('checkout');
-Route::post("orderplace",[ProductController::class,'orderPlace']);
-Route::get("myorders",[ProductController::class,'myOrders']);
-Route::get('/success', [ProductController::class, 'success'])->name('checkout.success');
-Route::get('/cancel', [ProductController::class, 'cancel'])->name('checkout.cancel');
+Route::post("/register", [UserController::class, 'register']);
+Route::post("/login", [UserController::class, 'login']);
+
+Route::post('/session', 'StripeController@session');
+Route::get('/success', [StripeController::class, 'success'])->name('success');
+Route::get('/cancel', [StripeController::class, 'cancel'])->name('cancel');
+
+Route::get('/', [ProductsController::class, 'index'])->name('index');
+Route::get('cart', [ProductsController::class, 'cart'])->name('cart');
+Route::get('add-to-cart/{id}', [ProductsController::class, 'addToCart'])->name('add_to_cart');
+Route::patch('update-cart', [ProductsController::class, 'update'])->name('update_cart');
+Route::delete('remove-from-cart', [ProductsController::class, 'remove'])->name('remove_from_cart');
+
+
+
+

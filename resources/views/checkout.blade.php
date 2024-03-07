@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://js.stripe.com/v3/"></script>
+<div id="stripe-checkout"></div>
+<script>
+    var stripe = Stripe('{{ config("services.stripe.key") }}');
 
-    <title>Laravel</title>
-</head>
-<body class="antialiased">
-    <h1>Success</h1>
-</body>
-</html>
+    stripe.redirectToCheckout({
+        sessionId: '{{ $sessionId }}'
+    }).then(function (result) {
+        // If redirectToCheckout fails due to a browser or network
+        // error, you should display the localized error message to your
+        // customer using error.message.
+        if (result.error) {
+            alert(result.error.message);
+        }
+    });
+</script>

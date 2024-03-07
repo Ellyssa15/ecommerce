@@ -1,5 +1,4 @@
-//resources/views/cart.blade.php
-@extends('master')
+@extends('layout')
 
 @section('content')
 <table id="cart" class="table table-hover table-condensed">
@@ -16,46 +15,29 @@
     @php $total = 0
     @endphp
     @if(session('cart'))
-    @foreach(session('cart') as $id => $details)
-    @php $total += $details['price'] * $details['quantity']
+    @foreach(session('cart') as $id => $product)
+    @php $total += product['price'] * $product['quantity']
     @endphp
     <tr data-id="{{ $id }}">
         <td data-th="Product">
             <div class="row">
                 <div class="col-sm-3 hidden-xs">
-                    <img src="{{ asset('img') }}/{{ $details['photo'] }}"
+                    <img src="{{$products['photo']}}" alt="{{$products['product_name']}}"
                          width="100"
                          height="100" class="img-responsive"/>
                 </div>
                 <div class="col-sm-9">
-                    <h4 class="nomargin">
-                        {{ $details['product_name'] }}
-                    </h4>
+                    <h4 class="nomargin">{{ $products['product_name'] }}</h4>
                 </div>
             </div>
         </td>
-        <td data-th="Price">
-            ${{ $details['price'] }}
-        </td>
+        <td data-th="Price">${{ $products['price'] }}</td>
         <td data-th="Quantity">
-            <label>
-                <input
-                    type="number"
-                    value="{{ $details['quantity'] }}"
-                    class="form-control quantity cart_update"
-                    min="1"/>
-            </label>
+            <input type="number" value="{{ $products['quantity'] }}" class="form-control quantity cart_update" min="1"/>
         </td>
-        <td data-th="Subtotal"
-            class="text-center">
-            ${{ $details['price'] * $details['quantity'] }}
-        </td>
+        <td data-th="Subtotal" class="text-center">${{ $products['price'] * $products['quantity'] }}</td>
         <td class="actions" data-th="">
-            <button class="btn btn-danger btn-sm cart_remove">
-                <i class="fa fa-trash-o">
-                </i>
-                Delete
-            </button>
+            <button class="btn btn-danger btn-sm cart_remove"><i class="fa fa-trash-o"></i> Delete</button>
         </td>
     </tr>
     @endforeach
@@ -63,29 +45,14 @@
     </tbody>
     <tfoot>
     <tr>
-        <td colspan="5" style="text-align:right;">
-            <h3>
-                <strong>
-                    Total ${{ $total }}
-                </strong>
-            </h3>
-        </td>
+        <td colspan="5" style="text-align:right;"><h3><strong>Total: RM{{ $total }}</strong></h3></td>
     </tr>
     <tr>
         <td colspan="5" style="text-align:right;">
             <form action="/session" method="POST">
-                <a href="{{ url('/') }}" class="btn btn-danger">
-                    <i class="fa fa-arrow-left">
-
-                    </i>
-                    Continue Shopping
-                </a>
+                <a href="{{ url('/') }}" class="btn btn-danger"> <i class="fa fa-arrow-left"></i> Continue Shopping</a>
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
-                <button class="btn btn-success"
-                        type="submit"
-                        id="checkout-live-button">
-                    <i class="fa fa-money">
-                    </i>
+                <button class="btn btn-success" type="submit" id="checkout-live-button"><i class="fa fa-money"></i>
                     Checkout
                 </button>
             </form>

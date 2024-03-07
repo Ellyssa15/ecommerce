@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    use HasFactory;
-    public $timestamps= false;
+    protected $fillable = ['status', 'total_price', 'session_id', 'product_id', 'quantity'];
+
+    public function products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }

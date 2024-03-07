@@ -1,57 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Laravel 10 Shopping Cart add to cart with Stripe Payment Gateway</title>
+    <title>ecommerce</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <link href="../css/app.css" rel="stylesheet">
+
+
 </head>
+
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 col-sm-12 col-12">
-            <div class="dropdown">
+{{View::make('header')}}
 
-                <button id="dLabel" type="button" class="btn btn-primary" data-bs-toggle="dropdown">
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge bg-danger">{{ count((array) session('cart')) }}</span>
-                    </button>
-
-                <div class="dropdown-menu" aria-labelledby="dLabel">
-                    <div class="row total-header-section">
-                        @php $total = 0 @endphp
-                        @foreach((array) session('cart') as $id => $details)
-                        @php $total += $details['price'] * $details['quantity'] @endphp
-                        @endforeach
-                        <div class="col-lg-12 col-sm-12 col-12 total-section text-right">
-                            <p>Total: <span class="text-success">$ {{ $total }}</span></p>
-                            </div>
-                        </div>
-                    @if(session('cart'))
-                    @foreach(session('cart') as $id => $details)
-                    <div class="row cart-detail">
-                        <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
-                            <img src="{{ asset('img') }}/{{ $details['photo'] }}" />
-                            </div>
-                        <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
-                            <p>{{ $details['product_name'] }}</p>
-                            <span class="price text-success"> ${{ $details['price'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
-                            </div>
-                        </div>
-                    @endforeach
-                    @endif
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
-                            <a href="{{ route('cart') }}" class="btn btn-primary btn-block">View all</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-</div>
 
 <br/>
 <div class="container">
@@ -59,12 +31,12 @@
     @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
-        </div>
+    </div>
     @endif
 
     @yield('content')
 </div>
+{{View::make('footer')}}
 
-@yield('scripts')
 </body>
 </html>

@@ -1,21 +1,20 @@
-@extends('master')
-@section('content'
+@extends('layout')
 
+@section('content')
+{{View::make('carousel')}}
 
 <div class="row">
     @foreach($products as $product)
     <div class="col-xs-18 col-sm-6 col-md-4" style="margin-top:10px;">
         <div class="img_thumbnail productlist">
-            <img src="{{ asset('img') }}/{{ $products->image }}"
-                 class="img-fluid">
+            <img src="{{$product['photo']}}" alt="{{$product['product_name']}}" class="img-fluid">
             <div class="caption">
                 <h4>{{ $product->product_name }}</h4>
                 <p>{{ $product->product_description }}</p>
                 <p><strong>Price: </strong> ${{ $product->price }}</p>
                 <p class="btn-holder">
                     <a href="{{ route('add_to_cart', $product->id) }}"
-                       class="btn btn-primary btn-block text-center"
-                       role="button">
+                       class="btn btn-primary btn-block text-center" role="button">
                         Add to cart
                     </a>
                 </p>

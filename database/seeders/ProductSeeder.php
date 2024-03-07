@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -27,64 +26,64 @@ class ProductSeeder extends Seeder
         DB::table('products')->insert([
 
             [
-                'name'=>'Aloe Vera Gel',
-                "price"=>"4",
-                "description"=>"300ml Large-Capacity Moisturizing Hydrating Acne Gel Mild Oil Control Care Aloe Vera Gel",
-                "image"=> $url1
+                'product_name' => 'Aloe Vera Gel',
+                "product_description" => "300ml Large-Capacity Moisturizing Hydrating Acne Gel Mild Oil Control Care Aloe Vera Gel",
+                "photo" => $url1,
+                "price" => "4",
             ],
             [
-                'name'=>'Nano Spray',
-                "price"=>"4",
-                "description"=>"Moisturizer Nano Sprayer Convenient Atomization USB Rechargeable Humidifier Face Steame",
-                "image"=> $url2
+                'product_name' => 'Nano Spray',
+                "price" => "4",
+                "product_description" => "Moisturizer Nano Sprayer Convenient Atomization USB Rechargeable Humidifier Face Steame",
+                "photo" => $url2
             ],
             [
-                'name'=>'Moisturizing Mask',
-                "price"=>"1",
-                "description"=>"BIOAQUA Moisturizing Mask Skin Care Depth Whitening Face Mask Hydration Oil Control Facial Mask",
-                "image"=> $url3
+                'product_name' => 'Moisturizing Mask',
+                "price" => "1",
+                "product_description" => "BIOAQUA Moisturizing Mask Skin Care Depth Whitening Face Mask Hydration Oil Control Facial Mask",
+                "photo" => $url3
             ],
             [
-                'name'=>'Facial Scrub',
-                "price"=>"11",
-                "description"=>"Images Advanced Fruit Acid Exfoliation Facial Scrub Deep Cleansing Peeling Gel Remove Dead Skin Blackhead",
-                "image"=> $url4
+                'product_name' => 'Facial Scrub',
+                "price" => "11",
+                "product_description" => "photos Advanced Fruit Acid Exfoliation Facial Scrub Deep Cleansing Peeling Gel Remove Dead Skin Blackhead",
+                "photo" => $url4
             ],
             [
-                'name'=>'Face Roller Massage',
-                "price"=>"11",
-                "description"=>"Pink Scraping Board Roller Set Face Neck Body Facial Scraping Board Massage",
-                "image"=> $url5
+                'product_name' => 'Face Roller Massage',
+                "price" => "11",
+                "product_description" => "Pink Scraping Board Roller Set Face Neck Body Facial Scraping Board Massage",
+                "photo" => $url5
             ],
             [
-                'name'=>'Perfume',
-                "price"=>"7",
-                "description"=>"PINKPOINT Flower Fragrance Long Lasting Perfume Spray Body Fragrance Perfume",
-                "image"=> $url6
+                'product_name' => 'Perfume',
+                "price" => "7",
+                "product_description" => "PINKPOINT Flower Fragrance Long Lasting Perfume Spray Body Fragrance Perfume",
+                "photo" => $url6
             ],
             [
-                'name'=>'Setting Spray',
-                "price"=>"7",
-                "description"=>"Spray Fixing Long lasting Spray Make Up Setting Spray Moisturizer all skin types Make up Finishing Spray",
-                "image"=> $url7
+                'product_name' => 'Setting Spray',
+                "price" => "7",
+                "product_description" => "Spray Fixing Long lasting Spray Make Up Setting Spray Moisturizer all skin types Make up Finishing Spray",
+                "photo" => $url7
             ],
             [
-                'name'=>'Stick Mud Mask',
-                "price"=>"3",
-                "description"=>"Green Tea Stick Cleansing Mud Mask Removal Blackheads Pore Mask Oil Balance Mask",
-                "image"=> $url8
+                'product_name' => 'Stick Mud Mask',
+                "price" => "3",
+                "product_description" => "Green Tea Stick Cleansing Mud Mask Removal Blackheads Pore Mask Oil Balance Mask",
+                "photo" => $url8
             ],
             [
-                'name'=>'Sunblock',
-                "price"=>"9",
-                "description"=>"3W Clinic Intensive UV Sunblock Sun Cream Collagen Sunscreen SPF50 PA+++ 70ml - sunblock",
-                "image"=> $url9
+                'product_name' => 'Sunblock',
+                "price" => "9",
+                "product_description" => "3W Clinic Intensive UV Sunblock Sun Cream Collagen Sunscreen SPF50 PA+++ 70ml - sunblock",
+                "photo" => $url9
             ],
             [
-                'name'=>'Sunscreen Spray',
-                "price"=>"2",
-                "description"=>"LIFUSHA Sunscreen Spray Waterproof Moisturizing Sunscreen Isolation Spray Sunscreen UV Protection Spray Sunblock",
-                "image"=> $url10
+                'product_name' => 'Sunscreen Spray',
+                "price" => "2",
+                "product_description" => "LIFUSHA Sunscreen Spray Waterproof Moisturizing Sunscreen Isolation Spray Sunscreen UV Protection Spray Sunblock",
+                "photo" => $url10
             ],
         ]);
     }
