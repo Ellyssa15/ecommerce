@@ -23,11 +23,8 @@
             </div>
             @endforeach
           </div>
-          {{-- <a class="btn btn-success" href="ordernow">Order Now</a> <br> <br> --}}
-          <form action="{{route('checkout')}}" method="POST">
-            @csrf
-            <button>Checkout</button>
-        </form>
+          <a class="btn btn-success" href="ordernow">Order Now</a> <br> <br>
+
      </div>
 </div>
 @endsection
