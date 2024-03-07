@@ -19,7 +19,11 @@ class StripeController extends Controller
         Stripe::setApiKey(config('stripe.sk'));
 
         foreach (session('cart') as $id => $details) {
+<<<<<<< HEAD
             $name = $details['name'];
+=======
+            $product_name = $details['product_name'];
+>>>>>>> 04d1b5c67fe9383007ab6c55dcc03d2474b01969
             $total = $details['price'];
             $quantity = $details['quantity'];
 
@@ -29,7 +33,11 @@ class StripeController extends Controller
             $productItems[] = [
                 'price_data' => [
                     'product_data' => [
+<<<<<<< HEAD
                         'name' => $name,
+=======
+                        'name' => $product_name,
+>>>>>>> 04d1b5c67fe9383007ab6c55dcc03d2474b01969
                     ],
                     'currency' => 'MYR',
                     'unit_amount' => $unit_amount,

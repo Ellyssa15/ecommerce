@@ -10,11 +10,12 @@
        <h3>Price : RM {{$product['price']}}</h3>
        <h4>Details: {{$product['description']}}</h4>
        <br><br>
-       <form action="/add_to_cart" method="POST">
-           @csrf
-           <input type="hidden" name="product_id" value={{$product['id']}}>
-       <button class="btn btn-primary">Add to Cart</button>
-       </form>
+           <form action="{{ route('cart.add') }}" method="post">
+               @csrf
+               <input type="hidden" name="id" value="{{ $product->id }}">
+               <input type="number" name="quantity" value="1" min="1">
+               <button type="submit">Add to Cart</button>
+           </form>
        <br>
        <button class="btn btn-success">Buy Now</button>
        <br><br>

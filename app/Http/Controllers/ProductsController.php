@@ -10,7 +10,7 @@ class ProductsController extends Controller
 public function index()
 {
 $products = Product::all();
-return view('product', compact('products'));
+return view('products', compact('products'));
 }
 
 public function cart()
@@ -27,8 +27,8 @@ if(isset($cart[$id])) {
 $cart[$id]['quantity']++;
 } else {
         $cart[$id] = [
-            "name" => $product->name,
-"image" => $product->image,
+            "product_name" => $product->product_name,
+"photo" => $product->photo,
 "price" => $product->price,
 "quantity" => 1
 ];
